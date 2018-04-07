@@ -1,0 +1,25 @@
+<div class="issue-list">
+  <% issues.each do |i| %>
+    <article class="issue clearfix">
+      <div class="avatar">
+        <a href="/happypeter">
+          <%= image_tag 'avatar.jpg', class: 'image-circle' %>
+        </a>      </div>
+      <div class="body">
+        <h5 class="title">
+          <%= link_to i.title, issues_path(i) %>
+        </h5>
+        <a class="read-more" href="#">read</a>
+        <span class="meta-data">
+            <%= link_to i.user.name, '#' %>
+        </span>
+        <%= time_ago_in_words(i.created_at) %> <%= t("ago") %>
+      </div>
+      <div class="issue-comment-count">
+        <i class="fa fa-comments icon-muted"></i>
+        <%= link_to i.comments.count, issues_path(i) %>
+      </div>
+    </article>
+  <% end %>
+
+</div>
